@@ -117,21 +117,21 @@ process (estado_atual)
 variable erros : std_logic_vector (9 downto 0):= "0000000000"; -- vetor com 10 número que armazena quais números já foram chutados
 
 begin 
-
+--palavra: 323017 --
 	case estado_atual is
 			when zero =>				
-				estado_displays(3) <= '1';
+				estado_displays(2) <= '1';
 			
 			when um =>			
-				estado_displays(4) <= '1';
+				estado_displays(1) <= '1';
 			
 			
 			when dois =>				
-				estado_displays(1) <= '1';
+				estado_displays(4) <= '1';
 			
 			when tres =>				
-				estado_displays(0) <= '1';
-				estado_displays(2) <= '1';			
+				estado_displays(3) <= '1';
+				estado_displays(5) <= '1';			
 
 			when quatro =>
 				if erros (3) = '0' then
@@ -152,7 +152,7 @@ begin
 				end if;
 				
 			when sete =>				
-				estado_displays(5) <= '1';
+				estado_displays(0) <= '1';
 
 			when oito =>
 				if erros (7) = '0' then
@@ -195,22 +195,22 @@ end process;
 
 --aqui os displays de 7 seg recebem as respectivos números
 
-hex0 <= "1111000" when estado_displays(5) = '1' else
+hex0 <= "1111000" when estado_displays(0) = '1' else
 		"1110111";
 		
-hex1 <= "1111001" when estado_displays(4) = '1' else
+hex1 <= "1111001" when estado_displays(1) = '1' else
 		"1110111";
 
-hex2 <= "1000000" when estado_displays(3) = '1' else
+hex2 <= "1000000" when estado_displays(2) = '1' else
 		"1110111";
 
-hex3 <= "0110000" when estado_displays(2) = '1' else
+hex3 <= "0110000" when estado_displays(3) = '1' else
 		"1110111";
 
-hex4 <= "0100100" when estado_displays(1) = '1' else
+hex4 <= "0100100" when estado_displays(4) = '1' else
 		"1110111";
 
-hex5 <= "0110000" when estado_displays(0) = '1' else
+hex5 <= "0110000" when estado_displays(5) = '1' else
 		"1110111";
 
 hex6 <= "0001100" when p = '1' else
